@@ -48,3 +48,35 @@ describe("CO Test for Full Coverage", function() {
     expect(products[0].price).equal(50);
   });
 });
+
+describe("Co Test for Mega Coverege", function() {
+  const coTest = new CarInsurance([ new Product("Mega Coverage", 0, 80) ]);
+
+  it("should return  0, 80 for sellIn and price on day 1", function() {
+    const products = coTest.updatePrice();
+    expect(products[0].name).equal("Mega Coverage");
+    expect(products[0].sellIn).equal(0);
+    expect(products[0].price).equal(80);
+  });
+
+  it("should return  0, 80 for sellIn and price on day 3", function() {
+    const products = coTest.updatePrice();
+    expect(products[0].name).equal("Mega Coverage");
+    expect(products[0].sellIn).equal(0);
+    expect(products[0].price).equal(80);
+  });
+
+  it("should return  0, 80 for sellIn and price on day 15", function() {
+    const products = coTest.updatePrice();
+    expect(products[0].name).equal("Mega Coverage");
+    expect(products[0].sellIn).equal(0);
+    expect(products[0].price).equal(80);
+  });
+
+  it("should return  0, 80 for sellIn and price on day 30", function() {
+    const products = coTest.updatePrice();
+    expect(products[0].name).equal("Mega Coverage");
+    expect(products[0].sellIn).equal(0);
+    expect(products[0].price).equal(80);
+  });
+});
