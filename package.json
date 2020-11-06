@@ -1,0 +1,19 @@
+{
+  "name": "calculate_price_car_insure",
+  "version": "1.0.0",
+  "description": "Hi, welcome to the Software Engineer CO Test. In this test we expect to see your approach to refactor a legacy code into a testeable, object oriented solution.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alejoortizd/calculate_price_car_insure.git"
+  },
+  "author": "Alejandro Ortiz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alejoortizd/calculate_price_car_insure/issues"
+  },
+  "homepage": "https://github.com/alejoortizd/calculate_price_car_insure#readme"
+}
