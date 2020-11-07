@@ -140,3 +140,38 @@ describe("Co Test for Special Full Coverage", function() {
   });
 
 });
+
+describe.only("CO Test for Super Sale", function() {
+  const coTest = new CarInsurance([ new Product("Super Sale", 3, 6) ]);
+
+  it("should return  2, 5 for sellIn and price on day 1", function() {
+    const products = coTest.updatePrice();
+    expect(products[0].name).equal("Super Sale");
+    expect(products[0].sellIn).equal(2);
+    expect(products[0].price).equal(5);
+  });
+
+  it("should return  0, 3 for sellIn and price on day 3", function() {
+    const coTest = new CarInsurance([ new Product("Super Sale", 1, 4) ]);
+    const products = coTest.updatePrice();
+    expect(products[0].name).equal("Super Sale");
+    expect(products[0].sellIn).equal(0);
+    expect(products[0].price).equal(3);
+  });
+
+  it("should return  -12, 0 for sellIn and price on day 15", function() {
+    const coTest = new CarInsurance([ new Product("Super Sale", -11, 0) ]);
+    const products = coTest.updatePrice();
+    expect(products[0].name).equal("Super Sale");
+    expect(products[0].sellIn).equal(-12);
+    expect(products[0].price).equal(0);
+  });
+
+  it("should return  -27, 50 for sellIn and price on day 30", function() {
+    const coTest = new CarInsurance([ new Product("Super Sale", -26, 0) ]);
+    const products = coTest.updatePrice();
+    expect(products[0].name).equal("Super Sale");
+    expect(products[0].sellIn).equal(-27);
+    expect(products[0].price).equal(0);
+  });
+});
