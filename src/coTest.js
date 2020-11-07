@@ -1,3 +1,5 @@
+const { nameProduct } = require('./typeProduct');
+
 class Product {
   constructor(name, sellIn, price) {
     this.name = name;
@@ -12,48 +14,19 @@ class CarInsurance {
   }
   updatePrice() {
     for (var i = 0; i < this.products.length; i++) {
-      if (this.products[i].name != 'Full Coverage' && this.products[i].name != 'Special Full Coverage') {
-        if (this.products[i].price > 0) {
-          if (this.products[i].name != 'Mega Coverage') {
-            this.products[i].price = this.products[i].price - 1;
-          }
-        }
+      const typeOfProduct = nameProduct(this.products[i].name);
+      this.products[i].sellIn += typeOfProduct.sellIn.value;
+      let  newPrice = null;
+
+      if(this.products[i].sellIn < 0) {
+        newPrice = typeOfProduct.price.negativeValue ? 0 : this.products[i].price + typeOfProduct.price.value + typeOfProduct.price.increase
       } else {
-        if (this.products[i].price < 50) {
-          this.products[i].price = this.products[i].price + 1;
-          if (this.products[i].name == 'Special Full Coverage') {
-            if (this.products[i].sellIn < 11) {
-              if (this.products[i].price < 50) {
-                this.products[i].price = this.products[i].price + 1;
-              }
-            }
-            if (this.products[i].sellIn < 6) {
-              if (this.products[i].price < 50) {
-                this.products[i].price = this.products[i].price + 1;
-              }
-            }
-          }
-        }
+        newPrice = this.products[i].price + typeOfProduct.price.value
       }
-      if (this.products[i].name != 'Mega Coverage') {
-        this.products[i].sellIn = this.products[i].sellIn - 1;
-      }
-      if (this.products[i].sellIn < 0) {
-        if (this.products[i].name != 'Full Coverage') {
-          if (this.products[i].name != 'Special Full Coverage') {
-            if (this.products[i].price > 0) {
-              if (this.products[i].name != 'Mega Coverage') {
-                this.products[i].price = this.products[i].price - 1;
-              }
-            }
-          } else {
-            this.products[i].price = this.products[i].price - this.products[i].price;
-          }
-        } else {
-          if (this.products[i].price < 50) {
-            this.products[i].price = this.products[i].price + 1;
-          }
-        }
+      if(newPrice > typeOfProduct.price.max) {
+        this.products[i].price = typeOfProduct.price.max
+      } else {
+        this.products[i].price = newPrice > 0 ? newPrice : 0;
       }
     }
 

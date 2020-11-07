@@ -4,7 +4,7 @@ const coTest = require('../src/coTest');
 const CarInsurance = coTest.CarInsurance;
 const Product = coTest.Product;
 
-describe("Co Test", function() {
+xdescribe("Co Test", function() {
 
   it("should foo", function() {
     const coTest = new CarInsurance([ new Product("foo", 0, 0) ]);
@@ -138,10 +138,9 @@ describe("Co Test for Special Full Coverage", function() {
     expect(products[0].sellIn).equal(-15);
     expect(products[0].price).equal(0);
   });
-
 });
 
-describe.only("CO Test for Super Sale", function() {
+describe("CO Test for Super Sale", function() {
   const coTest = new CarInsurance([ new Product("Super Sale", 3, 6) ]);
 
   it("should return  2, 5 for sellIn and price on day 1", function() {
